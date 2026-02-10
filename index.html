@@ -32,10 +32,12 @@
 
   .floating-heart {
   position: absolute;
-  bottom: -40px;
-  font-size: 2rem;
+  bottom: -50px;
+  font-size: 3rem;
   opacity: 0.8;
+  color: hotpink;
   animation: floatUp linear forwards;
+  z-index: 9999;
 }
 
 @keyframes floatUp {
@@ -182,7 +184,7 @@ window.addEventListener('load', () => {
     heart.className = 'floating-heart';
     heart.textContent = ['💖','💗','💕','💘','💝','❤️'][Math.floor(Math.random() * 6)];
 
-    heart.style.left = Math.random() * 100 + 'vw';
+    heart.style.left = Math.random() * window.innerWidth + 'px';
     heart.style.animationDuration = (5 + Math.random() * 5) + 's';
     heart.style.fontSize = (1.5 + Math.random() * 2) + 'rem';
 
@@ -196,10 +198,11 @@ window.addEventListener('load', () => {
     })();
   </script>
   
-  <div id="hearts-container" style="position: fixed; inset: 0; pointer-events: none; z-index: 9999;"></div>
+  <div id="hearts-container" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: 9999;"></div>
 
 </body>
 </html>
+
 
 
 
