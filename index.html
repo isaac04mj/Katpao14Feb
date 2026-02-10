@@ -54,10 +54,11 @@
       <div id="responseButtons" class="flex gap-4 pt-5 items-center">
         <button
           id="yesButton"
-          class="bounce inline-flex items-center justify-center whitespace-nowrap rounded-md text-xl font-medium cursor-pointer px-4 py-2 bg-green-500 text-white transition-all duration-300 ease-in-out hover:bg-green-400 min-h-12 min-w-[75px]"
+          class="bounce inline-flex items-center justify-center text-center rounded-md text-xl font-medium cursor-pointer px-4 py-2 bg-green-500 text-white transition-all duration-300 ease-in-out hover:bg-green-400 min-h-12 min-w-[75px]"
         >
-          Sí 
-          e Isaac me ama más
+          Sí ❤️<br>
+          (pero acepto que Isaac me ama más)
+
         </button>
         <button
           id="noButton"
@@ -128,13 +129,8 @@
         imageDisplay.alt = ALT_TEXTS[noClickCount];
 
         // Grow the "Yes" button to make it harder to ignore
-        buttonHeight += GROWTH_PER_CLICK;
-        buttonWidth += GROWTH_PER_CLICK;
-        fontSize += FONT_GROWTH_PER_CLICK;
+        yesButton.style.padding = `${12 + noClickCount * 6}px ${16 + noClickCount * 10}px`;
 
-        yesButton.style.height = `${buttonHeight}px`;
-        yesButton.style.width = `${buttonWidth}px`;
-        yesButton.style.fontSize = `${fontSize}px`;
 
         // Update "No" button text with increasingly desperate messages
         noButton.textContent = NO_BUTTON_MESSAGES[noClickCount];
@@ -161,6 +157,7 @@
   </script>
 </body>
 </html>
+
 
 
 
