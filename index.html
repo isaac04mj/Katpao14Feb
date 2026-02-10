@@ -158,6 +158,11 @@
       });
 
       yesButton.addEventListener('click', () => {
+        const music = document.getElementById('bgMusic');
+        music.volume = 0.35;
+        music.currentTime = 1; // salta el primer segundo
+        music.play();
+        
         imageDisplay.src = IMAGE_PATHS[IMAGE_PATHS.length - 1];
         imageDisplay.alt = ALT_TEXTS[ALT_TEXTS.length - 1];
         valentineQuestion.textContent = '¡¡Yeiii, te amo mi nenita ❤️🐒!! Me haces el hombre más feliz del mundo ';
@@ -200,8 +205,11 @@ window.addEventListener('load', () => {
   
   <div id="hearts-container" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: 9999;"></div>
 
+  <audio id="bgMusic" src="./music/song.mp3" preload="auto"></audio>
+
 </body>
 </html>
+
 
 
 
