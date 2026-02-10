@@ -30,27 +30,24 @@
       }
     }
 
-    .floating-hearts::before,
-    .floating-hearts::after {
-      content: "💖 💗 💕 💘 💝";
-      position: fixed;
-      left: 0;
-      right: 0;
-      bottom: -10%;
-      font-size: 2rem;
-      opacity: 0.3;
-      animation: floatUp 12s linear infinite;
-      pointer-events: none;
-    }
+    .floating-heart {
+  position: fixed;
+  bottom: -10%;
+  font-size: 1.5rem;
+  opacity: 0.5;
+  animation: floatUp linear infinite;
+  pointer-events: none;
+}
 
-    .floating-hearts::after {
-      animation-delay: 6s;
-    }
+@keyframes floatUp {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-120vh);
+  }
+}
 
-    @keyframes floatUp {
-      from { transform: translateY(0); }
-      to { transform: translateY(-120vh); }
-    }
   </style>
   <!-- Preload images so transitions feel instant -->
   <link rel="preload" as="image" href="./images/minion0.gif">
@@ -175,12 +172,35 @@
         confetti({ ...defaults, particleCount: 25, scalar: 3 });
         confetti({ ...defaults, particleCount: 10, scalar: 4 });
       });
+    // 💖 Floating hearts generator
+const heartsContainer = document.getElementById('hearts-container');
+
+function createHeart() {
+  const heart = document.createElement('div');
+  heart.classList.add('floating-heart');
+  heart.textContent = ['💖','💗','💕','💘','💝'][Math.floor(Math.random() * 5)];
+
+  heart.style.left = Math.random() * 100 + 'vw';
+  heart.style.fontSize = (1 + Math.random() * 2) + 'rem';
+  heart.style.animationDuration = (6 + Math.random() * 6) + 's';
+
+  heartsContainer.appendChild(heart);
+
+  setTimeout(() => {
+    heart.remove();
+  }, 12000);
+}
+
+// create hearts continuously
+setInterval(createHeart, 500);
+
     })();
   </script>
-  <div class="floating-hearts"></div>
+  <div id="hearts-container"></div>
 
 </body>
 </html>
+
 
 
 
